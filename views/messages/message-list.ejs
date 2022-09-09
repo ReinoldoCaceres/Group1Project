@@ -1,0 +1,48 @@
+<%- include ../partials/header.ejs %>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="row">
+        <h1><%= title %></h1>
+        <br>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header Row-->
+                <tr>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Phone Number</th>
+                    <th class="text-center">Message</th>
+                    <th class="text-center">More Info</th>
+                    <th class="text-center">Delete</th>
+
+
+                </tr>
+
+                <!-- Repeatable Template Row -->
+
+                <% for(let i = MessagesList.length - 1; i >= 0; i--) { %>
+                    <tr>
+                        <td class="text-center"><%= MessagesList[i].name %></td>
+                        <td class="text-center"><%= MessagesList[i].email %></td>
+                        <td class="text-center"><%= MessagesList[i].phoneNumber %></td>
+                        <td class="text-center"><%= MessagesList[i].message %></td>                        
+                        <td class="text-center">
+                            <a href="/messages/details/<%= MessagesList[i]._id %>" class="btn btn-success btn-sm"> 
+                            <i class="fas fa-info"></i> </a>
+                        </td>
+                        <td class="text-center">
+                            <!-- --------------------------- -->
+                            <!-- Fix the DELETE button below -->
+                            <!-- --------------------------- -->
+                            <a href="/messages/delete/<%= MessagesList[i]._id %>" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+  </main>
+  

@@ -1,0 +1,36 @@
+<%- include ../partials/header.ejs %>
+
+<!-- Content for the Details page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+
+                <div class="form-group">
+                    <label for="nameTextField">Name:</label>
+                    <strong><%= message.name %></strong>
+                </div>
+                <div class="form-group">
+                    <label for="emailTextField">Email:</label>
+                    <strong><%= message.email %></strong>
+                </div>
+                <div class="form-group">
+                    <label for="phoneTextField">Phone Number:</label>
+                    <strong><%= message.phoneNumber %></strong>
+                </div>
+                <div class="form-group">
+                    <label for="messageTextField">Message:</label>
+                    <strong><%= message.message %></strong>                    
+                </div>
+                <br />
+                
+                <a href="/messages/messages-list" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> 
+                    Cancel
+                </a>
+
+            </form>
+        </div>
+
+    </div>
+</div>
