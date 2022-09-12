@@ -6,7 +6,6 @@ let messageModel = mongoose.Schema(
     {
         name: String,
         email: String,
-        phoneNumber: String,
         message: String
     },
     {

@@ -16,7 +16,6 @@ module.exports.processAddPage = (req, res, next) => {
     _id: req.params.id,
     name: req.body.name,
     email: req.body.email,
-    phoneNumber: req.body.phone,
     message: req.body.message,
   });
 
