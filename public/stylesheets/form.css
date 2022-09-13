@@ -1,12 +1,12 @@
 /* Contact - Form // */
 @font-face {
   font-family: "Poppins Regular";
-  src: url(./Poppins-Regular.otf);
+  src: url(/public/fonts/Poppins-Regular.otf);
 }
 
 @font-face {
   font-family: "Segoescb";
-  src: url(./segoescb.ttf) format("truetype");
+  src: url(/public/fonts/segoescb.ttf) format("truetype");
   font-weight: bold;
   font-style: normal;
 }
