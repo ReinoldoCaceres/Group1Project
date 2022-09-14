@@ -1,5 +1,5 @@
 // Do not expose your credentials in your code.
-let atlasDB = "mongodb+srv://ReinoldoGlobal:f3NkZk2QJHJoQUZJ@cluster0@cluster0.dbt9bq0.mongodb.net/?retryWrites=true&w=majority";
+let atlasDB = "mongodb+srv://ReinoldoGlobal:BNif4CQdDibbfYr@cluster0.dbt9bq0.mongodb.net/?retryWrites=true&w=majority";
 
 // Database setup
 let mongoose = require('mongoose');
@@ -17,5 +17,5 @@ module.exports = function(){
     return mongodb;
 
     // ReinoldoGlobal
-    // f3NkZk2QJHJoQUZJ
+    // BNif4CQdDibbfYr
 }
