@@ -20,33 +20,32 @@
           <div class="contact__title-line"></div>
         </div>
 
-        <!-- Form -->
-        <form class="contact-us__form" action="">
+        <form class="contact-us__form" method="POST">
           <div class="cont-input">
             <input type="hidden" name="id" value="<%= message._id %>" />
 
             <label for="fname">Name</label><br />
-            <input class="form-input" type="text" id="fname" name="name" placeholder="Your name.."
-              value="<%= message.name %>" />
+            <input type="text" class="form-input" id="fname" placeholder="Your name.." name="name" value="<%= message.name %>" required>
+
           </div>
 
           <div class="cont-input">
             <label for="fname">Email</label><br />
 
-            <input class="form-input" type="text" name="email" id="" placeholder="name@example.com..."
-              value="<%= message.email%>" />
+            <input type="email" class="form-input" id="exampleFormControlInput2" placeholder="name@example.com..." name="email" value="<%= message.email%>" required>
+
           </div>
 
           <div class="cont-input">
             <label for="subject">Message</label><br />
-            <textarea class="form-textarea" id="subject" name="message" type="text" placeholder="Enter your message..."
-              value="<%= message.message%>"></textarea>
+            <textarea class="form-textarea" id="subject" name="message" type="text"value="<%= message.message%>" required placeholder="Enter your message..."></textarea>
           </div>
+
 
           <div class="form-bottom">
             <div class="read-more">
-              <input type="submit" value="Send" class="form-submit" />
-              <!-- Arrow // -->
+              <input type="submit" value="Send" class="form-submit">
+
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z" />
               </svg>
@@ -61,3 +60,53 @@
 </body>
 
 </html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/index-copy.css">
+    <title><%= title %> </title>
+</head>
+
+<body>
+        <section class="contact-us">
+            <br>
+            <h1 class="contact-title">Let's get in touch!</h1>
+            <div class="row">
+                <div class="col-sm-7 right-side-contact">
+                    <h2 class="contact-h2">Contact</h2>
+                    <img class="evenlope"src="/images/evenlope.png">
+                      <h3 class="email-h3">info@beckwithforazusa.com</h3>
+                </div>
+                <div class="col-sm-4">
+                    <form class="contact-form" method="POST">
+                        <div class="form-group">
+                          <input type="hidden" name="id" value="<%= message._id %>">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name" name="name" value="<%= message.name %>" required>
+                          </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Email</label>
+                          <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com" name="email" value="<%= message.email%>" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Enter your Message</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="message" type="text"value="<%= message.message%>" required></textarea>
+                        </div>
+                        <input class="submit" type="submit" value="Submit">
+                      </form>
+                </div>
+              </div>
+        </section>
+</body>
+</html> -->
