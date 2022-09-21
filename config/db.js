@@ -1,5 +1,9 @@
+require('dotenv').config()
+
+
 // Do not expose your credentials in your code.
-let atlasDB = "mongodb+srv://ReinoldoGlobal:BNif4CQdDibbfYr@cluster0.dbt9bq0.mongodb.net/?retryWrites=true&w=majority";
+let atlasDB = process.env.DB;
+
 
 // Database setup
 let mongoose = require('mongoose');
