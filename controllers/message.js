@@ -1,4 +1,6 @@
 let messageModel = require("../models/message");
+let sgMail = require("@sendgrid/mail");
+
 
 // Renders the Add form using the add_edit.ejs template
 module.exports.displayAddPage = (req, res, next) => {
@@ -29,6 +31,23 @@ module.exports.processAddPage = (req, res, next) => {
       res.redirect("/messages/success");
     }
   });
+
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const msg = {
+    to: "hector@global-urban.com", // Recipient
+    from: "admin@lissethflores.com", //  verified sender
+    subject: "A new contact form was sent by " + req.body.name,
+    text:  `${req.body.name} just sent a contact form directly from the website\n\nName: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}\n\nRegards,\n\nAdmin.`
+    
+  };
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log("Email sent");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 // Gets all messages from the Database and renders the page to list them all.
@@ -74,10 +93,8 @@ module.exports.displaySuccess = (req, res, next) => {
   });
 };
 
-
 // Deletes a message based on its id.
 module.exports.performDelete = (req, res, next) => {
-    
   let id = req.params.id;
 
   messageModel.remove({ _id: id }, (err) => {
@@ -89,4 +106,4 @@ module.exports.performDelete = (req, res, next) => {
       res.redirect("/messages/messages-list");
     }
   });
-}
+};

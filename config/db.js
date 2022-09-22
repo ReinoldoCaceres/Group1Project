@@ -20,6 +20,4 @@ module.exports = function(){
 
     return mongodb;
 
-    // ReinoldoGlobal
-    // BNif4CQdDibbfYr
 }
