@@ -35,7 +35,10 @@ module.exports.processAddPage = (req, res, next) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {
     to: "hector@global-urban.com", // Recipient
-    from: "admin@lissethflores.com", //  verified sender
+    from: {
+      name: "Admin",
+      email: "admin@lissethflores.com" //  verified sender
+    }, 
     subject: "A new contact form was sent by " + req.body.name,
     text:  `${req.body.name} just sent a contact form directly from the website\n\nName: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}\n\nRegards,\n\nAdmin.`
     
