@@ -130,4 +130,4 @@ dist
 .pnp.*sendgrid.env
 
 
-sendgrid.env 
+.sendgrid.env 
