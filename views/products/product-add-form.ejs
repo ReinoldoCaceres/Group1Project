@@ -1,0 +1,71 @@
+<% include ../partials/header.ejs %>
+
+<div class="container">
+  <div class="row">
+    <div class="offset-md-3 col-md-3">
+      <h1><%= title %></h1>
+
+
+      <form action="/products/add" method="post" validate>
+        <input type="hidden" name="id" value="<%= product._id %>" />
+        <div class="form-group">
+          <input
+            type="text"
+            name="name"
+            value="<%= product.name %>"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+            <label>Product Brand:</label>
+            <input
+              type="text"
+              name="brand"
+              value="<%= product.brand %>"
+              class="form-control"
+            />
+          </div>
+        <div class="form-group">
+          <label>Product Description:</label>
+          <input
+            type="text"
+            name="description"
+            value="<%= product.description %>"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label>Product Price:</label>
+          <input
+            type="text"
+            name="price"
+            value="<%= product.price %>"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label>Product Category:</label>
+          <input
+            type="text"
+            name="category"
+            value="<%= product.category %>"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label>Product Condition:</label>
+          <input
+            type="text"
+            name="condition"
+            value="<%= product.condition %>"
+            class="form-control"
+          />
+        </div>
+        <br>
+        <br>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+  </div>
+</div>

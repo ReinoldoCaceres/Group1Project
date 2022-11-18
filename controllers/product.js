@@ -8,7 +8,7 @@ module.exports.displayAddPage = (req, res, next) => {
   let newProduct = productModel();
 
   res.render("products/product-add-form", {
-    title: "Products",
+    title: "Add a new product",
     product: newProduct,
   });
 };
@@ -32,7 +32,7 @@ module.exports.processAddPage = (req, res, next) => {
 
   });
 
-  messageModel.create(newProduct, (err, item) => {
+  productModel.create(newProduct, (err, item) => {
     if (err) {
       console.log(err);
       res.end(err);

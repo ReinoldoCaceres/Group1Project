@@ -12,8 +12,8 @@ exports.home = function(req, res, next) {
         }
         else
         {
-            res.render('messages/message-list', {
-                title: 'Messages List', 
+            res.render('product/products-list', {
+                title: 'Products List', 
                 MessagesList: messagesList,
                 userName: req.user ? req.user.username : ''
             })            
