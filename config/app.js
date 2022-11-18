@@ -22,6 +22,8 @@ app.use(session({
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let messageRouter = require('../routes/message');
+let productRouter = require('../routes/product');
+
 
 
 // view engine setup
@@ -44,6 +46,8 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/messages', messageRouter);
+app.use('/products', productRouter);
+
 
 
 // catch 404 and forward to error handler

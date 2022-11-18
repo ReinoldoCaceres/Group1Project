@@ -1,0 +1,51 @@
+<%- include ../partials/header.ejs %>
+
+<!-- Main Content -->
+<main class="container">
+  <div class="row">
+    <h1><%= title %></h1>
+    <br />
+    <br />
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped table-hover">
+        <!-- Header Row-->
+        <tr>
+          <th class="text-center">Product Name</th>
+          <th class="text-center">Product Brand</th>
+          <th class="text-center">Product Description</th>
+          <th class="text-center">Product Price</th>
+          <th class="text-center">Product Category</th>
+          <th class="text-center">Product Condition</th>
+          <th class="text-center">Delete</th>
+        </tr>
+
+        <!-- Repeatable Template Row -->
+
+        <% for(let i = ProductList.length - 1; i >= 0; i--) { %>
+
+        <tr>
+          <td class="text-center"><%= ProductList[i].name %></td>
+          <td class="text-center"><%= ProductList[i].brand %></td>
+          <td class="text-center"><%= ProductList[i].description %></td>
+          <td class="text-center"><%= ProductList[i].price %></td>
+          <td class="text-center"><%= ProductList[i].category %></td>
+          <td class="text-center"><%= ProductList[i].condition %></td>
+
+          <td class="text-center">
+            <!-- --------------------------- -->
+            <!-- Fix the DELETE button below -->
+            <!-- --------------------------- -->
+            <a
+              href="/products/delete/<%= ProductList[i]._id %>"
+              class="btn btn-danger btn-sm"
+            >
+              <i class="fas fa-trash-alt"></i
+            ></a>
+          </td>
+        </tr>
+        <% } %>
+      </table>
+      <a href="/products/add" class="button">Add a new Product/a>
+    </div>
+  </div>
+</main>

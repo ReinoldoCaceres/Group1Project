@@ -1,5 +1,5 @@
 let messageModel = require("../models/message");
-let productModel = require("../models/product");
+let productModel = require("../models/products");
 let sgMail = require("@sendgrid/mail");
 
 
@@ -51,9 +51,9 @@ module.exports.productList = function (req, res, next) {
     if (err) {
       return console.error(err);
     } else {
-      res.render("products/list", {
+      res.render("products/products-list", {
         title: "Products List",
-        MessagesList: messagesList,
+        ProductList: productList,
         userName: req.user ? req.user.username : "",
       });
     }
