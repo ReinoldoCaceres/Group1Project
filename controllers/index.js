@@ -1,10 +1,11 @@
 let messageModel = require('../models/message');
+let productModel = require('../models/products');
 
 
 exports.home = function(req, res, next) {
     console.log('===> Original URL: ' + req.session.url);
 
-    messageModel.find((err, messagesList) => {
+    productModel.find((err, productList) => {
         //console.log(eventList);
         if(err)
         {
@@ -12,15 +13,11 @@ exports.home = function(req, res, next) {
         }
         else
         {
-            res.render('product/products-list', {
+            res.render('products/products-list', {
                 title: 'Products List', 
-                MessagesList: messagesList,
+                ProductList: productList,
                 userName: req.user ? req.user.username : ''
             })            
         }
     });
-    // res.render('events/list', { 
-    //     title: 'Home',
-    //     userName: req.user ? req.user.username : ''
-    // });
 };
