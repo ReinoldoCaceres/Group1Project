@@ -7,45 +7,34 @@
     <br />
     <br />
     <div class="table-responsive">
-      <table class="table table-bordered table-striped table-hover">
         <!-- Header Row-->
-        <tr>
-          <th class="text-center">Product Name</th>
-          <th class="text-center">Product Brand</th>
-          <th class="text-center">Product Description</th>
-          <th class="text-center">Product Price</th>
-          <th class="text-center">Product Category</th>
-          <th class="text-center">Product Condition</th>
-          <th class="text-center">Delete</th>
-        </tr>
-
-        <!-- Repeatable Template Row -->
-
         <% for(let i = ProductList.length - 1; i >= 0; i--) { %>
-
-        <tr>
-          <td class="text-center"><%= ProductList[i].name %></td>
-          <td class="text-center"><%= ProductList[i].brand %></td>
-          <td class="text-center"><%= ProductList[i].description %></td>
-          <td class="text-center"><%= ProductList[i].price %></td>
-          <td class="text-center"><%= ProductList[i].category %></td>
-          <td class="text-center"><%= ProductList[i].condition %></td>
-
-          <td class="text-center">
-            <!-- --------------------------- -->
-            <!-- Fix the DELETE button below -->
-            <!-- --------------------------- -->
-            <a
+          <div class="card" style="width: 18rem;">
+            <img src="<%= ProductList[i].image %>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= ProductList[i].name %></h5>
+              <p class="card-text"><%= ProductList[i].brand %></p>
+              <p class="card-text"><%= ProductList[i].price %></p>
+              <p class="card-text"><%= ProductList[i].category %></p>
+              <p class="card-text"><%= ProductList[i].condition %></p>
+              <p class="card-text"><%= ProductList[i].description %></p>
+    
+              <a
               href="/products/delete/<%= ProductList[i]._id %>"
               class="btn btn-danger btn-sm"
             >
               <i class="fas fa-trash-alt"></i
             ></a>
-          </td>
-        </tr>
+            </div>
+            </div>
+
+
         <% } %>
-      </table>
-      <a href="/products/add" class="button">Add a new Product/a>
+        <br>
+        <br>
+        <br>
+
+      <a href="/products/add" class="button" style="margin: 4rem;">Add a new Product/a>
     </div>
   </div>
 </main>

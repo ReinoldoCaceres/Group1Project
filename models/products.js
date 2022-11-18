@@ -9,7 +9,8 @@ let productModel = mongoose.Schema(
         description: String,
         price: String,
         category: String,
-        condition: String
+        condition: String,
+        image: String,
     },
     {
         collection: "products"

@@ -18,7 +18,7 @@ function requireAuth(req, res, next)
 router.get('/list', productController.productList);
 router.get('/add', requireAuth, productController.displayAddPage);
 router.post('/add', requireAuth, productController.processAddPage);
-router.post('/delete/:id', requireAuth, productController.performDelete);
+router.get('/delete/:id', requireAuth, productController.performDelete);
 
 
 

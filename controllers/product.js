@@ -8,7 +8,7 @@ module.exports.displayAddPage = (req, res, next) => {
   let newProduct = productModel();
 
   res.render("products/product-add-form", {
-    title: "Add a new product",
+    title: "New product",
     product: newProduct,
   });
 };
@@ -29,6 +29,7 @@ module.exports.processAddPage = (req, res, next) => {
     price: req.body.price,
     category: req.body.category,
     condition: req.body.condition,
+    image: req.body.image
 
   });
 
@@ -97,7 +98,7 @@ module.exports.performDelete = (req, res, next) => {
       res.end(err);
     } else {
       // refresh the book list
-      res.redirect("products/list");
+      res.redirect("/products/list");
     }
   });
 };

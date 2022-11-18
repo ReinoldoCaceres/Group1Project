@@ -20,7 +20,7 @@ router.get('/details/:id', requireAuth, messageController.details);
 router.get('/success', messageController.displaySuccess);
 router.post('/success', messageController.processAddPage);
 
-// router.get('/delete/:id', requireAuth, messageController.performDelete);
+router.get('/delete/:id', requireAuth, messageController.performDelete);
 
 
 router.get('/contact-us', messageController.displayAddPage);
