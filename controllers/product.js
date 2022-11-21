@@ -102,3 +102,55 @@ module.exports.performDelete = (req, res, next) => {
     }
   });
 };
+
+
+
+
+// Deletes a message based on its id.
+module.exports.performDelete = (req, res, next) => {
+  let id = req.params.id;
+
+  productModel.remove({ _id: id }, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      // refresh the book list
+      res.redirect("/products/list");
+    }
+  });
+};
+
+
+
+
+// Display checkout page
+module.exports.displaycheckoutPage = (req, res, next) => {
+  let newProduct = productModel();
+
+  res.render("checkout/checkout-form", {
+    title: "New product",
+    product: newProduct,
+  });
+};
+
+
+// Processes check out page
+module.exports.processcheckoutPage = (req, res, next) => {
+  
+let newProduct = productModel({
+  
+});
+
+productModel.create(newProduct, (err, item) => {
+  if (err) {
+    console.log(err);
+    res.end(err);
+  } else {
+    
+    console.log(item);
+    res.redirect("/checkout/check");
+  }
+});
+
+};

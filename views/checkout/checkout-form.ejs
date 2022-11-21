@@ -1,27 +1,33 @@
 <% include ../partials/header.ejs %>
 
-<div class="checkout-panel">
+
+
+ <form action="/checkout/check" method="post" validate>
+
+<link rel="stylesheet" href="/stylesheets/checkout.css">
+  <div class="checkout-panel">
     <div class="panel-body">
       <h2 class="title">Checkout</h2>
    
       <div class="payment-method">
         <label for="card" class="method card">
           <div class="card-logos">
-            <img src="img/visa_logo.png"/>
-            <img src="img/mastercard_logo.png"/>
+            <img src="/images/visa.jpeg" width="70px"/>
+            &nbsp;&nbsp;
+            <img src="/images/Master.jpeg" width="70px"/>
           </div>
    
           <div class="radio-input">
             <input id="card" type="radio" name="payment">
-            Pay $amount with credit card
+            Pay amount with credit card
           </div>
         </label>
    
         <label for="paypal" class="method paypal">
-          <img src="img/paypal_logo.png"/>
+          <img src="/images/paypal.jpeg" width="70px"/>
           <div class="radio-input">
             <input id="paypal" type="radio" name="payment">
-            Pay $amount with PayPal
+            Pay amount with PayPal
           </div>
         </label>
       </div>
@@ -49,7 +55,15 @@
           <input type="password" id="cardnumber"/>
    
           <span class="info">* CVV or CVC is the card security code, unique three digits number on the back of your card separate from its number.</span>
+
+              <br><br>  <a href="#" class="btn btn-primary">Pay Now</a>
+      
+
+          </div>
         </div>
+       </div>
       </div>
-    </div>
-  </div>
+
+
+    </form>
+    
