@@ -47,6 +47,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/messages', messageRouter);
 app.use('/products', productRouter);
+app.use('/checkout', productRouter);
 
 
 
