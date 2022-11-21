@@ -19,7 +19,8 @@ router.get('/list', productController.productList);
 router.get('/add', requireAuth, productController.displayAddPage);
 router.post('/add', requireAuth, productController.processAddPage);
 router.get('/delete/:id', requireAuth, productController.performDelete);
-
+// router.get('/cart', requireAuth, productController.displayCart);
+// router.get('/carts/:id', productController.processCartPage);
 
 router.get('/check', requireAuth, productController.displaycheckoutPage);
 router.post('/check', requireAuth, productController.processcheckoutPage);

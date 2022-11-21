@@ -1,45 +1,27 @@
 <%- include ../partials/header.ejs %>
 
 <!-- Main Content -->
-<main class="container">
-  <div class="row">
-    <h1><%= title %></h1>
-    <br />
-    <br />
-    <div class="table-responsive">
-        <!-- Header Row-->
-        <% for(let i = ProductList.length - 1; i >= 0; i--) { %>
-          <br>
-        <br>
 
-          <div class="row" style=" text-align: center; align-items: center; ">
-
-
-          <div class="card" style="width:30%;align-self: center; margin-right: auto; margin-left: auto;">
-            <img src="<%= ProductList[i].image %>" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><%= ProductList[i].name %></h5>
-              <p class="card-text"><%= ProductList[i].brand %></p>
-              <p class="card-text"><%= ProductList[i].price %></p>
-              <p class="card-text"><%= ProductList[i].category %></p>
-              <p class="card-text"><%= ProductList[i].condition %></p>
-              <p class="card-text"><%= ProductList[i].description %></p>
-              <a
-              href="/products/delete/<%= ProductList[i]._id %>"
-              class="btn btn-danger btn-sm"
-            >
-              <i class="fas fa-trash-alt"></i
-            ></a>
-            </div>
-            </div>
-          </div>
-          <br>
-
-        <% } %>
-        <br>
-        <br>
-
-      <a href="/products/add" class="btn btn-primary">Add a new Product</a>
-    </div>
+<div class="container" style="padding-top: 30px">
+<div class="row">
+<% for(let i = 0; i <= ProductList.length - 1; i++) { %>
+<div class="col-sm-3">
+  <div class="card" style="width: 18rem;">
+  <img src="<%= ProductList[i].image %>" class="img-thumbnail" style="height: 16rem; margin: 10px;" alt="<%= ProductList[i].name %>">
+  <div class="card-body">
+    <h5 class="card-title"><%= ProductList[i].name %></h5>
+    <p class="card-text"><%= ProductList[i].brand %></p>
+    <p class="card-text">$<%= ProductList[i].price %></p>
+    <p class="card-text"><%= ProductList[i].category %></p>
+    <p class="card-text"><%= ProductList[i].condition %></p>
+    <p class="card-text"><%= ProductList[i].description %></p>
+  <div class="card-body">
+    <a href="/products/delete/<%= ProductList[i]._id %>" class="btn btn-danger"> <i class="fas fa-trash-alt"></i> Delete</a>
+    <a href="/products/cart/" class="btn btn-primary" > <i class="fa fa-shopping-cart"></i> Add to cart</a>
   </div>
-</main>
+  </div>
+</div>
+</div>
+ <% } %>
+ </div>
+</div>

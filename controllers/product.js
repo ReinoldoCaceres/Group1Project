@@ -87,6 +87,71 @@ module.exports.productList = function (req, res, next) {
 //     message: newMessage,
 //   });
 // };
+// module.exports.displayCart = (req, res, next) => {
+//   let newProduct = cartModel();
+
+//   res.render("products/product-cart-form", {
+//     title: "Product",
+//     product: newProduct,
+//   });
+// };
+
+
+// // Processes cart page
+// module.exports.processCartPage = (req, res, next) => {
+//   const productId = req.params.id;
+//   const product = productModel.findById(productId);
+//   console.log(product.name);
+//   //const itemIndex = cart.items.findIndex((p) => p.productId == productId);
+   
+//   let newCart = cartModel({
+//     name: product.name,
+//     brand: product.brand,
+//     description: product.description,
+//     price: product.price,
+//     category: product.category,
+//     condition: product.condition,
+//     image: product.image,
+//     totalCost: product.price,
+
+//   });
+// };
+//   // if product does not exists in cart, find it in the db to retrieve its price and add new item
+  // cartModel.items.push({
+  //     name: product.name,
+  //       brand: product.brand,
+  //       description: product.description,
+  //       price: product.price,
+  //       category: product.category,
+  //       condition: product.condition,
+  //       image: product.image,
+  //       totalCost: product.price,
+  //   });
+  // cartModel.create(newCart, (err, item) => {
+  //   if (err) {
+  //     console.log(err);
+  //     res.end(err);
+  //   } else {
+  //     // refresh the book list
+  //     console.log(item);
+  //     res.redirect("/products/list");
+  //   }
+  // });
+
+// module.exports.cartList = function (req, res, next) {
+//   cartModel.find((err, cartList) => {
+//   if (err) {
+//     return console.error(err);
+//   } else {
+//     res.render("products/products-cart-form", {
+//       title: "Products List",
+//       ProductList: cartList,
+//       userName: req.user ? req.user.username : "",
+//     });
+//   }
+// });
+// };
+
 
 // Deletes a message based on its id.
 module.exports.performDelete = (req, res, next) => {

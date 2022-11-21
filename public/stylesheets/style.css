@@ -3,17 +3,14 @@ html {
   min-height: 100%;
 }
 
-.navbar{
+/* .navbar{
   background-color: antiquewhite !important;
-}
+} */
 
 .collapsibleNavbar{
   color: black!important;
 }
 
-li > a {
-  color: black!important;
-}
 body {
   background-color: antiquewhite;
 }
@@ -35,6 +32,8 @@ body {
   margin: auto;
 }
 
-.navbar{
-  font-size: 1.2rem;
+nav{
+  font-size: 20px;
+  color: white;
 }
+
