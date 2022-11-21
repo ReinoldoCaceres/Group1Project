@@ -20,7 +20,8 @@ router.get('/add', requireAuth, productController.displayAddPage);
 router.post('/add', requireAuth, productController.processAddPage);
 router.get('/delete/:id', requireAuth, productController.performDelete);
 
-
+router.get('/check', requireAuth, productController.displaycheckoutPage);
+router.post('/check', requireAuth, productController.processcheckoutPage);
 
 // router.get('/messages-list', requireAuth, messageController.messageList);
 // router.get('/details/:id', requireAuth, messageController.details);
