@@ -219,3 +219,60 @@ productModel.create(newProduct, (err, item) => {
 });
 
 };
+
+
+//Render the add product using cart form.ejs template
+module.exports.cartaddPage = (req, res, next) => {
+  let addProduct = productModel();
+
+  res.render("products/product-cart-form", {
+    title: "New product",
+    product: addProduct,
+  });
+};
+
+
+
+
+// Processes the data submitted from the Add form to create a new event
+// Process the data from the add form to add data into cart page
+
+
+
+module.exports.AddcartPage = (req, res, next) => {
+
+  
+  let newProduct = productModel({
+    _id: req.params.id,
+    name: req.body.name,
+    brand: req.body.brand,
+    description: req.body.description,
+    price: req.body.price,
+    category: req.body.category,
+    condition: req.body.condition,
+    image: req.body.image
+
+        
+      /*id: req.params.id,
+      name: req.body.name,
+      image: req.body.image,
+      price: req.body.price,
+*/
+
+  });
+
+  productModel.create(newProduct, (err, item) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      // refresh the book list
+      console.log(item);
+      res.redirect("/products/cart");
+    }
+  });
+  
+};
+
+
+
