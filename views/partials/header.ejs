@@ -26,9 +26,9 @@
         <li class="nav-item">
               <a class="nav-link" href="/products/add"> Add Product</a>
             </li>  
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="/messages/contact-us"> Contact Form </a>
-            </li>  
+            </li>   -->
          <li class="nav-item">  
               <% if (typeof userName == 'string' && userName) { %>
                 <a class="nav-link" href="/users/signout" onclick="return confirm('Are you sure?')"><i class="fa fa-door-open"></i> Sign-Out (<%= userName %>)</a>

@@ -4,13 +4,14 @@ let mongoose = require('mongoose');
 let cartModel = mongoose.Schema(
     {
         name: String,
+        //TODO: to add Product ID
         brand: String,
         description: String,
         price: String,
         category: String,
         condition: String,
         image: String,
-    totalCost:  Number,
+        totalCost:  Number,
     },
     {
         collection: "cart"

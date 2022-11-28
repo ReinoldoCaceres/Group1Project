@@ -29,16 +29,6 @@ router.get('/cart', requireAuth, productController.cartaddPage);
 router.post('/cart', requireAuth, productController.AddcartPage);
 
 
-// router.get('/messages-list', requireAuth, messageController.messageList);
-// router.get('/details/:id', requireAuth, messageController.details);
-// router.get('/success', messageController.displaySuccess);
-// router.post('/success', messageController.processAddPage);
-
-// router.get('/delete/:id', requireAuth, messageController.performDelete);
-
-
-// router.get('/contact-us', messageController.displayAddPage);
-// router.post('/contact-us', messageController.processAddPage);
 
 
 module.exports = router;

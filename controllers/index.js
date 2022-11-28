@@ -1,4 +1,3 @@
-let messageModel = require('../models/message');
 let productModel = require('../models/products');
 
 

@@ -21,7 +21,6 @@ app.use(session({
 
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
-let messageRouter = require('../routes/message');
 let productRouter = require('../routes/product');
 
 
@@ -45,7 +44,6 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/messages', messageRouter);
 app.use('/products', productRouter);
 app.use('/checkout', productRouter);
 
