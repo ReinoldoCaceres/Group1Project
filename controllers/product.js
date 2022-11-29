@@ -16,12 +16,7 @@ module.exports.displayAddPage = (req, res, next) => {
 
 // Processes the data submitted from the Add form to create a new event
 module.exports.processAddPage = (req, res, next) => {
-    // name: String,
-    // brand: String,
-    // description: String,
-    // price: String,
-    // category: String,
-    // condition: String
+
   let newProduct = productModel({
     _id: req.params.id,
     name: req.body.name,
@@ -62,99 +57,6 @@ module.exports.productList = function (req, res, next) {
   });
 };
 
-// // Gets a message by id and renders the details page.
-// module.exports.details = (req, res, next) => {
-//   let id = req.params.id;
-
-//   messageModel.findById(id, (err, messageToShow) => {
-//     if (err) {
-//       console.log(err);
-//       res.end(err);
-//     } else {
-//       //show the edit view
-//       res.render("messages/details", {
-//         title: "Message Details",
-//         message: messageToShow,
-//       });
-//     }
-//   });
-// };
-
-// module.exports.displaySuccess = (req, res, next) => {
-//   let newMessage = messageModel();
-
-//   res.render("messages/success", {
-//     title: "Success",
-//     message: newMessage,
-//   });
-// };
-// module.exports.displayCart = (req, res, next) => {
-//   let newProduct = cartModel();
-
-//   res.render("products/product-cart-form", {
-//     title: "Product",
-//     product: newProduct,
-//   });
-// };
-
-
-// Processes cart page
-module.exports.processCartPage = (req, res, next) => {
-  const productId = req.params.id;
-  const product = productModel.findById(productId);//the product to add to the cart
-  console.log(product.name);//TODO: Fix this error here
-  //const itemIndex = cart.items.findIndex((p) => p.productId == productId);
-   
-  let newCart = cartModel({
-    name: product.name,
-    brand: product.brand,
-    description: product.description,
-    price: product.price,
-    category: product.category,
-    condition: product.condition,
-    image: product.image,
-    totalCost: product.price,
-
-  });
-
-  // if product does not exists in cart, find it in the db to retrieve its price and add new item
-  // cartModel.push({
-  //     name: product.name,
-  //       brand: product.brand,
-  //       description: product.description,
-  //       price: product.price,
-  //       category: product.category,
-  //       condition: product.condition,
-  //       image: product.image,
-  //       totalCost: product.price,
-  //   });
-
-  cartModel.create(newCart, (err, item) => {
-    if (err) {
-      console.log(err);
-      res.end(err);
-    } else {
-      // refresh the book list
-      console.log(item);
-      res.redirect("/products/list");
-    }
-  });
-
-};
-
-module.exports.cartList = function (req, res, next) {
-  cartModel.find((err, cartList) => {
-  if (err) {
-    return console.error(err);
-  } else {
-    res.render("products/products-cart-form", {
-      title: "Products List",
-      ProductList: cartList,
-      userName: req.user ? req.user.username : "",
-    });
-  }
-});
-};
 
 
 // Deletes a message based on its id.
@@ -235,12 +137,8 @@ module.exports.cartaddPage = (req, res, next) => {
   });
 };
 
-// Processes the data submitted from the Add form to create a new event
-// Process the data from the add form to add data into cart page
-
 module.exports.AddcartPage = (req, res, next) => {
 
-  //TODO: change this to the product model
   
   let newProduct = productModel({
     _id: req.params.id,
@@ -275,4 +173,59 @@ module.exports.AddcartPage = (req, res, next) => {
 };
 
 
+
+// Renders the Add form using the add_edit.ejs template
+module.exports.displaycartPage = (req, res, next) => {
+  let newProduct = cartModel();
+
+  res.render("products/product-cart-form", {
+    title: "New product",
+    product: newProduct,
+  });
+};
+
+// Processes the data submitted from the Add form to create a new event
+module.exports.processcartPage = (req, res, next) => {
+
+  let newProduct = cartModel({
+    _id: req.params.id,
+    name: req.body.name,
+    brand: req.body.brand,
+    description: req.body.description,
+    price: req.body.price,
+    category: req.body.category,
+    condition: req.body.condition,
+    image: req.body.image
+
+  });
+
+  productModel.create(newProduct, (err, item) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      // refresh the book list
+      console.log(item);
+      res.redirect("/products/lists");
+    }
+  });
+  
+};
+
+
+// cart list
+// Gets all messages from the Database and renders the page to list them all.
+module.exports.cartList = function (req, res, next) {
+  productModel.find((err, CartList) => {
+  if (err) {
+    return console.error(err);
+  } else {
+    res.render("products/cart-lists", {
+      title: "cart List",
+      CartList: CartList,
+      userName: req.user ? req.user.username : "",
+    });
+  }
+});
+};
 
