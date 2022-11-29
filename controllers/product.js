@@ -74,23 +74,56 @@ module.exports.performDelete = (req, res, next) => {
   });
 };
 
-
-
-
-// Deletes a message based on its id.
-module.exports.performDelete = (req, res, next) => {
+module.exports.performAddToCart = (req, res, next) => {
   let id = req.params.id;
+  var name;
 
-  productModel.remove({ _id: id }, (err) => {
+  //TODO: 
+  console.log(id);
+  productModel.findById(id, (err, product) => {
     if (err) {
       console.log(err);
-      res.end(err);
-    } else {
-      // refresh the book list
-      res.redirect("/products/list");
+    }
+    else{
+      name = product.name;
+      brand = product.brand;
+      description = product.description;
+      price = product.price;
+      category = product.category;
+      condition = product.condition;
+      image = product.image;
+      totalCost = 1;
+
+      let newCartItem = productModel({
+        _id: id,
+        name: name,
+        brand: brand,
+        description: description,
+        price: price,
+        category: category,
+        condition: condition,
+        image: image,
+        totalCost: totalCost
+      });
+    
+      cartModel.create(newCartItem, (err, item) => {
+        if (err) {
+          console.log(err);
+          res.end(err);
+        } else {
+          // refresh the book list
+          console.log(item);
+        }
+      });
+      res.render("products/test", {
+        title: "New product",
+        id: id,
+        name:name
+      });
     }
   });
-};
+}
+
 
 
 

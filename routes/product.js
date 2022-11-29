@@ -21,7 +21,6 @@ router.post('/add', requireAuth, productController.processAddPage);
 router.get('/delete/:id', requireAuth, productController.performDelete);
 
 
-
 router.get('/check', requireAuth, productController.displaycheckoutPage);
 router.post('/check', requireAuth, productController.processcheckoutPage);
 
@@ -31,8 +30,8 @@ router.get('/cart', requireAuth, productController.cartaddPage);
 router.post('/cart', requireAuth, productController.AddcartPage);
 
 
-router.get('/lists', requireAuth, productController.cartList);
-router.get('/cart',  productController.cartList)
+// router.get('/lists', requireAuth, productController.cartList);
+// router.get('/cart',  productController.cartList)
 
 
 
