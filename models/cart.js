@@ -6,14 +6,14 @@ let cartModel = mongoose.Schema(
         name: String,
         brand: String,
         description: String,
-        price: String,
+        price: Number,
         category: String,
         condition: String,
         image: String,
         totalCost:  Number,
     },
     {
-        collection: "cart"
+        collection: "carts"
     }
 );
 

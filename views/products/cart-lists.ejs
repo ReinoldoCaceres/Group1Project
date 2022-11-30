@@ -1,18 +1,32 @@
 <%- include ../partials/header.ejs %>
 
-    
-    <div class="card">
-    <div class="card-header">
     <h2>Shopping Cart</h2>
-    </div>
-    </div>
+
+    
 
 
   <!-- Main Content -->
 
+  <div style="float: right;">
+   
+    
+    <div class="card-header">
+  <h2>Summary</h2>
+  <lable>Total Cost </lable><%= pri %> <br>
+  <lable>Sub Total (13%) </lable><%= pritax %>
+
+</div>
+</div>
+</div>
+</div>
+
 <div class="container" style="padding-top: 40px">
-<div class="row">
+<div class="col-sm-3">
 <% for(let i = 0; i <= CartList.length -1; i++) { %>
+  <% var add = 0 %> 
+  <% add = CartList[i].price + add %>
+  <% add %>
+ 
 <div class="col-sm-3">
   <div class="card" style="width: 18rem;">
   <img src="<%=CartList[i].image %>" class="img-thumbnail" style="height: 16rem; margin: 10px;" alt="<%= CartList[i].name %>"> 
@@ -21,70 +35,22 @@
   <div class="card-body">
     <h5 class="card-title"><%= CartList[i].name %></h5>
     <p class="card-text"><%= CartList[i].brand %></p>
-    <p class="card-text">$<%= CartList[i].price %></p>
+    <p class="card-text"><%= CartList[i].price %></p>
     <p class="card-text"><%= CartList[i].description %></p>
-    <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item"> <i class="fas fa-trash"></i></button>          
-    <div class="d-flex flex-row">
-                    <button class="btn btn-link px-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                      <i class="fas fa-minus"></i>
-                    </button>
+    <a
+              href="/products/del/<%= CartList[i]._id %>"
+              class="btn btn-danger"
+            >
+              <i class="fas fa-trash-alt"></i> Delete</a
+            >
+     </div>   
 
-                    <input id="form1" min="0" name="quantity" value="2" type="number"
-                      class="form-control form-control-sm" style="width: 50px;" />
-
-                    <button class="btn btn-link px-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                      <i class="fas fa-plus"></i>
-                    </button>
-                  </div>
-    
-    
-
-    </div>
-    
+    </div>   
   
  </div>
- </div> <br>
-
-
-    <div class="col-lg-4">
-    <div class="card"> 
-    <div class="card-header">
-    <h2>Summary</h2>
-  </div> 
-  
-      <div class="card-body">
-      <div class="d-flex bd-highlight">
-        <div class="p-2 flex-grow-1 bd-highlight">Total </div>
-        <div class="p-2 bd-highlight">$<%= CartList[i].price %></div>
-        
-      </div>
-      <div class="d-flex bd-highlight">
-        <div class="p-2 flex-grow-1 bd-highlight">Estimated Delivery</div>
-      </div>
-      <div class="d-flex bd-highlight">
-        <div class="p-2 flex-grow-1 bd-highlight">GST/HST</div>
-      </div>
-  <hr/>
-  <div class="d-flex bd-highlight">
-        <div class="p-2 flex-grow-1 bd-highlight"><h5>Sub-Total</h5></div>
-        
-</div>
-
-
-
-  <div class="card-body"> 
-  </div>
-</div>
-</div>
-<br> 
+ </div> 
+ <br>
  <% } %>
  </div>
 
 </div>
-
-
-
-
-  

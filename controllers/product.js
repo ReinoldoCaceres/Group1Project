@@ -93,6 +93,8 @@ module.exports.performAddToCart = (req, res, next) => {
       condition = product.condition;
       image = product.image;
       totalCost = 1;
+      console.log(name, brand,description,price);
+
 
       let newCartItem = productModel({
         _id: id,
@@ -115,11 +117,8 @@ module.exports.performAddToCart = (req, res, next) => {
           console.log(item);
         }
       });
-      res.render("products/test", {
-        title: "New product",
-        id: id,
-        name:name
-      });
+      res.redirect("/products/list");
+      
     }
   });
 }
@@ -262,3 +261,40 @@ module.exports.cartList = function (req, res, next) {
 });
 };
 
+module.exports.ListCart = function (req, res, next) {
+  cartModel.find((err, cartList) => {
+  if (err) {
+    return console.error(err);
+  } else {
+    var total=0
+    for(let i=0;i<cartList.length;i++){
+      console.log(cartList[i].price)
+       total= cartList[i].price+total;
+       
+    }
+    var Gst= 0.13*total+total;
+    res.render("products/cart-lists", {
+      title: "Products List",
+      pri:total,
+      pritax:Gst,
+      CartList: cartList,
+      userName: req.user ? req.user.username : "",
+    });
+  }
+});
+};
+
+// Deletes a message based on its id.
+module.exports.performDeleteCart = (req, res, next) => {
+  let id = req.params.id;
+
+  cartModel.remove({ _id: id }, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      // refresh the book list
+      res.redirect("/products/list");
+    }
+  });
+};
