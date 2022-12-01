@@ -1,12 +1,14 @@
 <%- include ../partials/header.ejs %>
 
-    <h2>Shopping Cart</h2>
-
-    
-
+    <div class="card">
+    <div class="card-header"> <br>
+    <h1>Shopping Cart</h1>
+    </div>
+    </div>
 
   <!-- Main Content -->
-
+  
+  <br>
   <div style="padding-right: 30px;">
   <div style="float: right;">
   <div class="col-lg-20">
@@ -15,9 +17,14 @@
   <h2>Summary</h2>
   <hr/>
   
-  <h4><lable>Total Cost: </lable>$<%= pri %> <h4> <hr/>
+  <h4>
+  
+  <lable>Total Cost: </lable>$<%= pri %> <hr/>
   <lable> GST/HST:   (13%)</lable> <br> <hr/>
   <lable>Sub Total: </lable>$<%= pritax %>
+
+   </h4>
+
   
 </div>
 </div>
