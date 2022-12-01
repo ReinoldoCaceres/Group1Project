@@ -39,7 +39,7 @@
   <div class="card-body">
     <h5 class="card-title"><%= CartList[i].name %></h5>
     <p class="card-text"><%= CartList[i].brand %></p>
-    <p class="card-text"><%= CartList[i].price %></p>
+    <p class="card-text">$<%= CartList[i].price %></p>
     <p class="card-text"><%= CartList[i].description %></p>
     <a
               href="/products/del/<%= CartList[i]._id %>"
