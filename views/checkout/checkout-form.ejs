@@ -4,7 +4,8 @@
 
  <form action="/checkout/check" method="post" validate>
 
-<link rel="stylesheet" href="/stylesheets/checkout.css">
+<link rel="stylesheet" href="/stylesheets/checkout.css"> 
+<div class="abc">
   <div class="checkout-panel">
     <div class="panel-body">
       <h2 class="title">Checkout</h2>
@@ -45,18 +46,26 @@
    
             <div>
               <label for="verification">CVV / CVC *</label>
-              <input type="password" id="verification"/>
+              <input type="text" id="verification"/>
             </div>
           </div>
    
         </div>
         <div class="column-2">
           <label for="cardnumber">Card Number</label>
-          <input type="password" id="cardnumber"/>
+          <input type="text" id="cardnumber"/>
    
           <span class="info">* CVV or CVC is the card security code, unique three digits number on the back of your card separate from its number.</span>
 
-              <br><br>  <a href="#" class="btn btn-primary">Pay Now</a>
+<br> <br>
+
+<button onclick="myFunction()"  class="btn btn-primary" >Pay Now</button>
+
+<script>
+function myFunction() {
+  alert(" Payment Successfully and your ordered has been replace");
+}
+</script>
       
 
           </div>
@@ -64,6 +73,7 @@
        </div>
       </div>
 
+      </div>
+
 
     </form>
-    

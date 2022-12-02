@@ -1,10 +1,15 @@
 <%- include ../partials/header.ejs %>
 
+
+    
     <div class="card">
     <div class="card-header"> <br>
     <h1>Shopping Cart</h1>
     </div>
     </div>
+
+    
+
 
   <!-- Main Content -->
   
@@ -19,12 +24,13 @@
   
   <h4>
   
-  <lable>Total Cost: </lable>$<%= pri %> <hr/>
+  <lable>Total Cost: </lable>$<%= pri %> <h4> <hr/>
   <lable> GST/HST:   (13%)</lable> <br> <hr/>
   <lable>Sub Total: </lable>$<%= pritax %>
 
-   </h4>
-
+  </h4> <br>
+  
+  <a  href="/products/check" class="btn btn-primary"> Checkout</a> 
   
 </div>
 </div>
@@ -37,11 +43,10 @@
   <% var add = 0 %> 
   <% add = CartList[i].price + add %>
   <% add %>
- 
+
 <div class="col-sm-3">
   <div class="card" style="width: 18rem;">
   <img src="<%=CartList[i].image %>" class="img-thumbnail" style="height: 16rem; margin: 10px;" alt="<%= CartList[i].name %>"> 
-  
 
   <div class="card-body">
     <h5 class="card-title"><%= CartList[i].name %></h5>
@@ -65,3 +70,4 @@
  </div>
 
 </div>
+
