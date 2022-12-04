@@ -1,25 +1,18 @@
-<%- include ../partials/header.ejs %>
+<%- include ../partials/header.ejs %>  
 
-
-    
+ 
     <div class="card">
     <div class="card-header"> <br>
-    <h1>Shopping Cart</h1>
+    <h3>Shopping Cart</h3>
     </div>
     </div>
-
-    
-
-
-  <!-- Main Content -->
-  
   <br>
   <div style="padding-right: 30px;">
   <div style="float: right;">
   <div class="col-lg-20">
     <div class="card"> 
     <div class="card-header">
-  <h2>Summary</h2>
+  <h3>Summary</h3>
   <hr/>
   
   <h4>
@@ -37,8 +30,8 @@
 </div>
 </div>
 
-<div class="container" style="padding-top: 40px">
-<div class="col-sm-3">
+<div class="container" style="padding-top: 30px">
+<div class="row">
 <% for(let i = 0; i <= CartList.length -1; i++) { %>
   <% var add = 0 %> 
   <% add = CartList[i].price + add %>
@@ -47,12 +40,13 @@
 <div class="col-sm-3">
   <div class="card" style="width: 18rem;">
   <img src="<%=CartList[i].image %>" class="img-thumbnail" style="height: 16rem; margin: 10px;" alt="<%= CartList[i].name %>"> 
-
+  
   <div class="card-body">
     <h5 class="card-title"><%= CartList[i].name %></h5>
     <p class="card-text"><%= CartList[i].brand %></p>
     <p class="card-text">$<%= CartList[i].price %></p>
     <p class="card-text"><%= CartList[i].description %></p>
+  <div class="card-body">
     <a
               href="/products/del/<%= CartList[i]._id %>"
               class="btn btn-danger"
@@ -69,5 +63,9 @@
  <% } %>
  </div>
 
+</div>
+
+
+</div>
 </div>
 
