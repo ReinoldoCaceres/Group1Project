@@ -117,7 +117,7 @@ module.exports.performAddToCart = (req, res, next) => {
           console.log(item);
         }
       });
-      res.redirect("/products/list");
+      res.redirect("/products/cartList");
       
     }
   });

@@ -15,6 +15,8 @@ function requireAuth(req, res, next)
     }
 }
 
-router.get('/add/:id', requireAuth, productController.performAddToCart);
+// router.get('/add/:id', requireAuth, productController.performAddToCart);
+router.get('/add/:id', productController.performAddToCart);
+
 
 module.exports = router;

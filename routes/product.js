@@ -21,16 +21,27 @@ router.post('/add', requireAuth, productController.processAddPage);
 router.get('/delete/:id', requireAuth, productController.performDelete);
 
 
-router.get('/check', requireAuth, productController.displaycheckoutPage);
-router.post('/check', requireAuth, productController.processcheckoutPage);
+// router.get('/check', requireAuth, productController.displaycheckoutPage);
+// router.post('/check', requireAuth, productController.processcheckoutPage);
 
 
 
-router.get('/cart', requireAuth, productController.cartaddPage);
-router.post('/cart', requireAuth, productController.AddcartPage);
-router.get('/cartList', requireAuth, productController.ListCart);
+// router.get('/cart', requireAuth, productController.cartaddPage);
+// router.post('/cart', requireAuth, productController.AddcartPage);
+// router.get('/cartList', requireAuth, productController.ListCart);
 
-router.get('/del/:id', requireAuth, productController.performDeleteCart);
+
+router.get('/check', productController.displaycheckoutPage);
+router.post('/check', productController.processcheckoutPage);
+
+
+
+router.get('/cart', productController.cartaddPage);
+router.post('/cart', productController.AddcartPage);
+router.get('/cartList', productController.ListCart);
+
+
+router.get('/del/:id', productController.performDeleteCart);
 
 
 
