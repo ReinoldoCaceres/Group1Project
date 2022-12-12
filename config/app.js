@@ -23,6 +23,8 @@ let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let productRouter = require('../routes/product');
 let cartRouter = require('../routes/cart');
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('../swagger_output.json')
 
 
 
@@ -37,6 +39,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../node_modules')));
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // Sets up passport
 app.use(flash());
