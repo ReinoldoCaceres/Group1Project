@@ -38,7 +38,6 @@ module.exports.renderSignin = function(req, res, next) {
 module.exports.renderSignup = function(req, res, next) {
   if (!req.user) {
 
-    // creates a empty new user object.
     let newUser = User();
 
     res.render('auth/signup', {

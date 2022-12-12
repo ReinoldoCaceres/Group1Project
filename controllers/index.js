@@ -5,7 +5,6 @@ exports.home = function(req, res, next) {
     console.log('===> Original URL: ' + req.session.url);
 
     productModel.find((err, productList) => {
-        //console.log(eventList);
         if(err)
         {
             return console.error(err);

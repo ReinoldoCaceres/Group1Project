@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  <!-- Main Nav bar  -->  
-  
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -31,9 +29,6 @@
               <a class="nav-link" href="/products/cartList"> My Cart</a>
             </li>  
 
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="/messages/contact-us"> Contact Form </a>
-            </li>   -->
          <li class="nav-item">  
               <% if (typeof userName == 'string' && userName) { %>
                 <a class="nav-link" href="/users/signout" onclick="return confirm('Are you sure?')"><i class="fa fa-door-open"></i> Sign-Out (<%= userName %>)</a>

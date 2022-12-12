@@ -1,11 +1,7 @@
 require('dotenv').config()
 
-
-// Do not expose your credentials in your code.
 let atlasDB = process.env.DB;
 
-
-// Database setup
 let mongoose = require('mongoose');
 
 module.exports = function(){
