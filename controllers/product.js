@@ -298,3 +298,12 @@ module.exports.performDeleteCart = (req, res, next) => {
     }
   });
 };
+
+module.exports.displayfeedbackPage = (req, res, next) => {
+  let newProduct = productModel();
+
+  res.render("products/feedback", {
+    title: "Feedback",
+    product: newProduct,
+  });
+};

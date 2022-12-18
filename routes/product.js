@@ -32,10 +32,9 @@ router.get('/cartList', requireAuth, productController.ListCart);
 
 router.get('/del/:id', requireAuth, productController.performDeleteCart);
 
+router.get('/feedback', productController.displayfeedbackPage);
 
 
-// router.get('/lists', requireAuth, productController.cartList);
-// router.get('/cart',  productController.cartList)
 
 
 
