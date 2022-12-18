@@ -3,7 +3,7 @@ let mongoose = require('mongoose');
 let feedbackModel = mongoose.Schema(
     {
         firstName: String,
-        LasttName: String,
+        lastName: String,
         email: String,
         comment: String,
     },
