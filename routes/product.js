@@ -22,22 +22,22 @@ router.post('/add', requireAuth, productController.processAddPage);
 router.get('/delete/:id', requireAuth, productController.performDelete);
 
 
-router.get('/check', requireAuth, productController.displaycheckoutPage);
-router.post('/check', requireAuth, productController.processcheckoutPage);
+router.get('/check', productController.displaycheckoutPage);
+router.post('/check', productController.processcheckoutPage);
 
 
 
-router.get('/cart', requireAuth, productController.cartaddPage);
-router.post('/cart', requireAuth, productController.AddcartPage);
+router.get('/cart', productController.cartaddPage);
+router.post('/cart', productController.AddcartPage);
 
-router.get('/cartList', requireAuth, productController.ListCart);
+router.get('/cartList', productController.ListCart);
 
-router.get('/del/:id', requireAuth, productController.performDeleteCart);
+router.get('/del/:id', productController.performDeleteCart);
 
-router.get('/feedback', requireAuth, productController.displayfeedbackPage);
-router.post('/feedback', requireAuth, productController.processAddFeebackPage);
+router.get('/feedback', productController.displayfeedbackPage);
+router.post('/feedback', productController.processAddFeebackPage);
 
-router.get('/feedback/list', requireAuth, productController.displayfeedbackList);
+router.get('/feedback/list', productController.displayfeedbackList);
 
 
 
