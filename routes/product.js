@@ -17,6 +17,7 @@ function requireAuth(req, res, next)
 
 router.get('/list', productController.productList);
 router.get('/add', requireAuth, productController.displayAddPage);
+
 router.post('/add', requireAuth, productController.processAddPage);
 router.get('/delete/:id', requireAuth, productController.performDelete);
 
@@ -28,11 +29,15 @@ router.post('/check', requireAuth, productController.processcheckoutPage);
 
 router.get('/cart', requireAuth, productController.cartaddPage);
 router.post('/cart', requireAuth, productController.AddcartPage);
+
 router.get('/cartList', requireAuth, productController.ListCart);
 
 router.get('/del/:id', requireAuth, productController.performDeleteCart);
 
-router.get('/feedback', productController.displayfeedbackPage);
+router.get('/feedback', requireAuth, productController.displayfeedbackPage);
+router.post('/feedback', requireAuth, productController.processAddFeebackPage);
+
+router.get('/feedback/list', requireAuth, productController.displayfeedbackList);
 
 
 

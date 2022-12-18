@@ -1,31 +1,30 @@
 <%- include ../partials/header.ejs %>
 
-<div class="card">
-  <div class="card-header">
-    <h2>Shopping Cart</h2> <br>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
-   <img
-          src="<%= image %>"
-          class="img-thumbnail"
-          style="height: 16rem; margin: 10px" />    
-
-    <p class="card-text"><%= name %></p>
-    <p class="card-text"><%= brand %></p>
-    <p class="card-text"><%= description %></p>
-    <p class="card-text"><%= category %></p>
-    <p class="card-text"><%= price %></p>
-    <p class="card-text"><%= condition %></p>
-
-    <a
-              href="/products/delete"
-              class="btn btn-danger"
-            >
-              <i class="fas fa-trash-alt"></i> Delete</a
-            >
-    
-    
-
+  <div>
+    <h2>In this section you can find what our customers think about us!</h2>
   </div>
+
+  <div>
+    <% for(let i = 0; i <= feedbackList.length - 1; i++) { %>
+
+          <div class="card-body">
+            <h2>Client Comment:</h2>
+            <h5 class="card-title">First Name: <%= feedbackList[i].firstName %></h5>
+            <p class="card-text">Last Name: <%= feedbackList[i].lastName %></p>
+            <p class="card-text">Email: <%= feedbackList[i].email %></p>
+            <p class="card-text">Comment: <%= feedbackList[i].comment %></p>
+          </div>
+      <% } %>
+  </div>
+
+</div>
 </div>
 
 
