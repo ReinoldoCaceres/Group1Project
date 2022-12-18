@@ -1,5 +1,6 @@
 let productModel = require("../models/products");
 let cartModel = require("../models/cart");
+let feedbackModel = require("../models/feedback");
 
 let sgMail = require("@sendgrid/mail");
 
@@ -13,7 +14,6 @@ module.exports.displayAddPage = (req, res, next) => {
 };
 
 module.exports.processAddPage = (req, res, next) => {
-
   let newProduct = productModel({
     _id: req.params.id,
     name: req.body.name,
@@ -22,8 +22,7 @@ module.exports.processAddPage = (req, res, next) => {
     price: req.body.price,
     category: req.body.category,
     condition: req.body.condition,
-    image: req.body.image
-
+    image: req.body.image,
   });
 
   productModel.create(newProduct, (err, item) => {
@@ -36,11 +35,10 @@ module.exports.processAddPage = (req, res, next) => {
       res.redirect("/products/list");
     }
   });
-  
 };
 
 module.exports.productList = function (req, res, next) {
-    productModel.find((err, productList) => {
+  productModel.find((err, productList) => {
     if (err) {
       return console.error(err);
     } else {
@@ -61,7 +59,6 @@ module.exports.performDelete = (req, res, next) => {
       console.log(err);
       res.end(err);
     } else {
-      
       res.redirect("/products/list");
     }
   });
@@ -70,13 +67,12 @@ module.exports.performDelete = (req, res, next) => {
 module.exports.performAddToCart = (req, res, next) => {
   let id = req.params.id;
   var name;
- 
+
   console.log(id);
   productModel.findById(id, (err, product) => {
     if (err) {
       console.log(err);
-    }
-    else{
+    } else {
       name = product.name;
       brand = product.brand;
       description = product.description;
@@ -85,8 +81,7 @@ module.exports.performAddToCart = (req, res, next) => {
       condition = product.condition;
       image = product.image;
       totalCost = 1;
-      console.log(name, brand,description,price);
-
+      console.log(name, brand, description, price);
 
       let newCartItem = productModel({
         _id: id,
@@ -97,9 +92,9 @@ module.exports.performAddToCart = (req, res, next) => {
         category: category,
         condition: condition,
         image: image,
-        totalCost: totalCost
+        totalCost: totalCost,
       });
-    
+
       cartModel.create(newCartItem, (err, item) => {
         if (err) {
           console.log(err);
@@ -109,10 +104,9 @@ module.exports.performAddToCart = (req, res, next) => {
         }
       });
       res.redirect("/products/cartList");
-      
     }
   });
-}
+};
 
 module.exports.displaycheckoutPage = (req, res, next) => {
   let newProduct = productModel();
@@ -123,24 +117,18 @@ module.exports.displaycheckoutPage = (req, res, next) => {
   });
 };
 
-
 module.exports.processcheckoutPage = (req, res, next) => {
-  
-let newProduct = productModel({
-  
-});
+  let newProduct = productModel({});
 
-productModel.create(newProduct, (err, item) => {
-  if (err) {
-    console.log(err);
-    res.end(err);
-  } else {
-    
-    console.log(item);
-    res.redirect("/checkout/check");
-  }
-});
-
+  productModel.create(newProduct, (err, item) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      console.log(item);
+      res.redirect("/checkout/check");
+    }
+  });
 };
 
 module.exports.cartaddPage = (req, res, next) => {
@@ -153,8 +141,6 @@ module.exports.cartaddPage = (req, res, next) => {
 };
 
 module.exports.AddcartPage = (req, res, next) => {
-
-  
   let newProduct = productModel({
     _id: req.params.id,
     name: req.body.name,
@@ -163,8 +149,7 @@ module.exports.AddcartPage = (req, res, next) => {
     price: req.body.price,
     category: req.body.category,
     condition: req.body.condition,
-    image: req.body.image
-
+    image: req.body.image,
   });
 
   productModel.create(newProduct, (err, item) => {
@@ -176,9 +161,7 @@ module.exports.AddcartPage = (req, res, next) => {
       res.redirect("/products/cart");
     }
   });
-  
 };
-
 
 module.exports.displaycartPage = (req, res, next) => {
   let newProduct = cartModel();
@@ -189,9 +172,7 @@ module.exports.displaycartPage = (req, res, next) => {
   });
 };
 
-
 module.exports.processcartPage = (req, res, next) => {
-
   let newProduct = cartModel({
     _id: req.params.id,
     name: req.body.name,
@@ -200,8 +181,7 @@ module.exports.processcartPage = (req, res, next) => {
     price: req.body.price,
     category: req.body.category,
     condition: req.body.condition,
-    image: req.body.image
-
+    image: req.body.image,
   });
 
   productModel.create(newProduct, (err, item) => {
@@ -213,44 +193,42 @@ module.exports.processcartPage = (req, res, next) => {
       res.redirect("/products/lists");
     }
   });
-  
 };
 
 module.exports.cartList = function (req, res, next) {
   productModel.find((err, CartList) => {
-  if (err) {
-    return console.error(err);
-  } else {
-    res.render("products/cart-lists", {
-      title: "cart List",
-      CartList: CartList,
-      userName: req.user ? req.user.username : "",
-    });
-  }
-});
+    if (err) {
+      return console.error(err);
+    } else {
+      res.render("products/cart-lists", {
+        title: "cart List",
+        CartList: CartList,
+        userName: req.user ? req.user.username : "",
+      });
+    }
+  });
 };
 
 module.exports.ListCart = function (req, res, next) {
   cartModel.find((err, cartList) => {
-  if (err) {
-    return console.error(err);
-  } else {
-    var total=0
-    for(let i=0;i<cartList.length;i++){
-      console.log(cartList[i].price)
-       total= cartList[i].price+total;
-       
+    if (err) {
+      return console.error(err);
+    } else {
+      var total = 0;
+      for (let i = 0; i < cartList.length; i++) {
+        console.log(cartList[i].price);
+        total = cartList[i].price + total;
+      }
+      var Gst = 0.13 * total + total;
+      res.render("products/cart-lists", {
+        title: "Products List",
+        pri: total,
+        pritax: Gst,
+        CartList: cartList,
+        userName: req.user ? req.user.username : "",
+      });
     }
-    var Gst= 0.13*total+total;
-    res.render("products/cart-lists", {
-      title: "Products List",
-      pri:total,
-      pritax:Gst,
-      CartList: cartList,
-      userName: req.user ? req.user.username : "",
-    });
-  }
-});
+  });
 };
 
 module.exports.performDeleteCart = (req, res, next) => {
@@ -267,10 +245,47 @@ module.exports.performDeleteCart = (req, res, next) => {
 };
 
 module.exports.displayfeedbackPage = (req, res, next) => {
-  let newProduct = productModel();
+  let feedback = feedbackModel();
 
   res.render("products/feedback", {
     title: "Feedback",
-    product: newProduct,
+    feedback: feedback,
+  });
+};
+
+module.exports.processAddFeebackPage = (req, res, next) => {
+  let newFeedback = feedbackModel({
+    _id: req.params.id,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    comment: req.body.comment,
+  });
+
+  feedbackModel.create(newFeedback, (err, item) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      // refresh the book list
+      console.log(item);
+      res.redirect("/products/feedback/list");
+    }
+  });
+};
+
+
+
+module.exports.displayfeedbackList = function (req, res, next) {
+  feedbackModel.find((err, feedbackList) => {
+    if (err) {
+      return console.error(err);
+    } else {
+      res.render("products/test", {
+        title: "Feedback",
+        feedbackList: feedbackList,
+        userName: req.user ? req.user.username : "",
+      });
+    }
   });
 };
