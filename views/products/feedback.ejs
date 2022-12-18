@@ -1,56 +1,81 @@
-<%- include ../partials/header.ejs %>  
+<%- include ../partials/header.ejs %>
 
-<head>    
-<meta name="viewport" content="width=device-width, initial-scale=1">    
-<link rel="stylesheet" href="/stylesheets/feedback.css" />
-</head>  
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/stylesheets/feedback.css" />
+</head>
 
-<body>    
- <div class="card">
-    <div class="card-header"> <br>
-    <h3>Feedback Form</h3>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <br />
+      <h3>Feedback Form</h3>
     </div>
-    </div>  
-<div class="container">    
-  <form>    
-    <div class="row">    
-      <div class="col-25">    
-        <label for="fname">First Name</label>    
-      </div>    
-      <div class="col-75">    
-        <input type="text" id="fname" name="firstname" placeholder="Your First name..">    
-      </div>    
-    </div>    
-    <div class="row">    
-      <div class="col-25">    
-        <label for="lname">Last Name</label>    
-      </div>    
-      <div class="col-75">    
-        <input type="text" id="lname" name="lastname" placeholder="Your Last name..">    
-      </div>    
-    </div>    
-    <div class="row">    
-        <div class="col-25">    
-          <label for="email">Email</label>    
-        </div>    
-        <div class="col-75">    
-          <input type="email" id="email" name="mailid" placeholder="Your Email..">    
-        </div>    
-      </div>    
-      
-    <div class="row">    
-      <div class="col-25">    
-        <label for="feed_back">Feed Back</label>    
-      </div>    
-      <div class="col-75">    
-        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>    
-      </div>    
-    </div> 
-    
-     
-  </form>    
-</div>    
-    <div class="QWW">    
-      <input type="submit" value="Submit">    
-    </div>  
-</body>    
+  </div>
+  <div class="container">
+    <form action="/products/feedback" method="post" validate>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">First Name</label>
+        </div>
+        <div class="col-75">
+          <input type="hidden" name="id" value="<%= feedback._id %>" />
+
+          <input
+            type="text"
+            id="fname"
+            name="firstName"
+            placeholder="Your First name.."
+            value="<%= feedback.firstName %>"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Last Name</label>
+        </div>
+        <div class="col-75">
+          <input
+            type="text"
+            id="lname"
+            name="lastName"
+            placeholder="Your Last name.."
+            value="<%= feedback.lastName %>"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="email">Email</label>
+        </div>
+        <div class="col-75">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your Email.."
+            value="<%= feedback.email %>"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="feed_back">Feed Back</label>
+        </div>
+        <div class="col-75">
+          <textarea
+            id="subject"
+            name="comment"
+            placeholder="Write about your experience!.."
+            style="height: 200px"
+            value="<%= feedback.comment %>"
+          ></textarea>
+        </div>
+      </div>
+      <div class="QWW">
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+  </div>
+</body>
