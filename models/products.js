@@ -1,7 +1,5 @@
-// Import
 let mongoose = require('mongoose');
 
-// Create a model class
 let productModel = mongoose.Schema(
     {
         name: String,

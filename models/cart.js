@@ -1,6 +1,5 @@
 let mongoose = require('mongoose');
 
-// Create a model class
 let cartModel = mongoose.Schema(
     {
         name: String,

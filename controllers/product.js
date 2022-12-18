@@ -3,8 +3,6 @@ let cartModel = require("../models/cart");
 
 let sgMail = require("@sendgrid/mail");
 
-
-// Renders the Add form using the add_edit.ejs template
 module.exports.displayAddPage = (req, res, next) => {
   let newProduct = productModel();
 
@@ -14,7 +12,6 @@ module.exports.displayAddPage = (req, res, next) => {
   });
 };
 
-// Processes the data submitted from the Add form to create a new event
 module.exports.processAddPage = (req, res, next) => {
 
   let newProduct = productModel({
@@ -42,7 +39,6 @@ module.exports.processAddPage = (req, res, next) => {
   
 };
 
-// Gets all messages from the Database and renders the page to list them all.
 module.exports.productList = function (req, res, next) {
     productModel.find((err, productList) => {
     if (err) {
@@ -57,9 +53,6 @@ module.exports.productList = function (req, res, next) {
   });
 };
 
-
-
-// Deletes a message based on its id.
 module.exports.performDelete = (req, res, next) => {
   let id = req.params.id;
 
@@ -68,7 +61,7 @@ module.exports.performDelete = (req, res, next) => {
       console.log(err);
       res.end(err);
     } else {
-      // refresh the book list
+      
       res.redirect("/products/list");
     }
   });
@@ -77,8 +70,7 @@ module.exports.performDelete = (req, res, next) => {
 module.exports.performAddToCart = (req, res, next) => {
   let id = req.params.id;
   var name;
-
-  //TODO: 
+ 
   console.log(id);
   productModel.findById(id, (err, product) => {
     if (err) {
@@ -113,21 +105,15 @@ module.exports.performAddToCart = (req, res, next) => {
           console.log(err);
           res.end(err);
         } else {
-          // refresh the book list
           console.log(item);
         }
       });
-      res.redirect("/products/list");
+      res.redirect("/products/cartList");
       
     }
   });
 }
 
-
-
-
-
-// Display checkout page
 module.exports.displaycheckoutPage = (req, res, next) => {
   let newProduct = productModel();
 
@@ -138,7 +124,6 @@ module.exports.displaycheckoutPage = (req, res, next) => {
 };
 
 
-// Processes check out page
 module.exports.processcheckoutPage = (req, res, next) => {
   
 let newProduct = productModel({
@@ -158,8 +143,6 @@ productModel.create(newProduct, (err, item) => {
 
 };
 
-
-//Render the add product using cart form.ejs template
 module.exports.cartaddPage = (req, res, next) => {
   let addProduct = productModel();
 
@@ -182,13 +165,6 @@ module.exports.AddcartPage = (req, res, next) => {
     condition: req.body.condition,
     image: req.body.image
 
-        
-      /*id: req.params.id,
-      name: req.body.name,
-      image: req.body.image,
-      price: req.body.price,
-*/
-
   });
 
   productModel.create(newProduct, (err, item) => {
@@ -196,7 +172,6 @@ module.exports.AddcartPage = (req, res, next) => {
       console.log(err);
       res.end(err);
     } else {
-      // refresh the book list
       console.log(item);
       res.redirect("/products/cart");
     }
@@ -205,8 +180,6 @@ module.exports.AddcartPage = (req, res, next) => {
 };
 
 
-
-// Renders the Add form using the add_edit.ejs template
 module.exports.displaycartPage = (req, res, next) => {
   let newProduct = cartModel();
 
@@ -216,7 +189,7 @@ module.exports.displaycartPage = (req, res, next) => {
   });
 };
 
-// Processes the data submitted from the Add form to create a new event
+
 module.exports.processcartPage = (req, res, next) => {
 
   let newProduct = cartModel({
@@ -236,7 +209,6 @@ module.exports.processcartPage = (req, res, next) => {
       console.log(err);
       res.end(err);
     } else {
-      // refresh the book list
       console.log(item);
       res.redirect("/products/lists");
     }
@@ -244,9 +216,6 @@ module.exports.processcartPage = (req, res, next) => {
   
 };
 
-
-// cart list
-// Gets all messages from the Database and renders the page to list them all.
 module.exports.cartList = function (req, res, next) {
   productModel.find((err, CartList) => {
   if (err) {
@@ -284,7 +253,6 @@ module.exports.ListCart = function (req, res, next) {
 });
 };
 
-// Deletes a message based on its id.
 module.exports.performDeleteCart = (req, res, next) => {
   let id = req.params.id;
 
@@ -293,7 +261,6 @@ module.exports.performDeleteCart = (req, res, next) => {
       console.log(err);
       res.end(err);
     } else {
-      // refresh the book list
       res.redirect("/products/list");
     }
   });

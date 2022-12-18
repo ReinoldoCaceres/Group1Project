@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server.js"
+    "start": "node ./server.js",
+    "doc": "jsdoc jsdoc.json",
+    "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
+    "swagger-autogen": "node swagger.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@sendgrid/mail": "^7.7.0",
+    "and": "^0.0.3",
     "body-parser": "^1.19.0",
     "bootstrap": "^5.1.1",
     "compression": "^1.7.4",
@@ -20,12 +24,15 @@
     "express-session": "^1.17.2",
     "http-errors": "~1.6.3",
     "jquery": "^3.6.0",
+    "jsdocs": "^1.0.0",
     "method-override": "^3.0.0",
     "moment": "^2.29.4",
     "mongoose": "^6.0.8",
     "morgan": "~1.9.1",
     "passport": "^0.5.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "swagger-autogen": "^2.22.0",
+    "swagger-ui-express": "^4.6.0"
   },
   "description": "COMP229.M2022 - Midterm Template",
   "main": "server.js",
@@ -42,5 +49,17 @@
   "engines": {
     "node": "16.13.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReinoldoCaceres/Group1Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ReinoldoCaceres/Group1Project/issues"
+  },
+  "homepage": "https://github.com/ReinoldoCaceres/Group1Project#readme",
+  "devDependencies": {
+    "jsdoc": "^4.0.0",
+    "minami": "^1.2.3"
+  }
 }
